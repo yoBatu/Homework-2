@@ -1,1 +1,29 @@
+# imports for statistics libraries
+from math import sqrt
+import pandas as pds
+from sklearn.metrics import mean_squared_error
+from statsmodels.tsa.api import SimpleExpSmoothing, Holt
+from statsmodels.tsa.holtwinters import ExponentialSmoothing
+import numpy as npy
+import statsmodels.api as sm
+import matplotlib.pyplot as mplt 
+import warnings
 
+warnings.filterwarnings("ignore")
+
+original = pds.read_csv("HW03_USD_TRY_Trading.txt", sep='\t')
+
+dataframe = original.head(len(original)-1)
+dataframe.info()
+daysrs = dataframe['day']
+opens = dataframe['open']
+freq = 1440 
+for i in range(len(days)) :
+    if days[i] == "6.05.2019" :
+    
+        break
+maydata = opens[mayindex:len(days)]
+numbers = npy.asarray(maydata,dtype='double')
+result = sm.tsa.seasonal_decompose(numbers,freq=24,model='Additive')
+result.plot()
+mplt.show()
